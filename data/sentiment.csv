@@ -1,0 +1,10 @@
+sentence,sentiment
+I am very sad,negative
+I am beautiful,positive
+I am neutral,neutral
+I am very sad,negative
+I am beautiful,positive
+I am neutral,neutral
+I hate this,negative
+I am neutral.,neutral
+I love this.,positive

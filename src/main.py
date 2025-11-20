@@ -2,7 +2,8 @@ import os, csv
 import numpy as np
 from fastapi import FastAPI
 from pydantic import BaseModel
-from model import get_pipeline, get_label_predictions
+# important specify src.model for the tests
+from src.model import get_pipeline, get_label_predictions 
 
 app = FastAPI()
 
