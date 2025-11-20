@@ -35,7 +35,6 @@ async def get_predictions(new_sentences: Reviews):
         writer = csv.writer(file)
         for sentence, sentiment in zip(new_sentences.sentences, predictions):
             writer.writerow([sentence, int_to_label[int(sentiment)]])
-
     return {"predictions": predictions.tolist()}
 
 if __name__ == "__main__": 
