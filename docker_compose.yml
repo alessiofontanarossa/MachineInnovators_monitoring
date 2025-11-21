@@ -1,0 +1,29 @@
+# version: '3.8' # the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion
+
+services:
+  ################# DOWNLOAD MY APP FROM DOCKER HUB #################
+  app:
+    image: alessiofontanarossa/machineinnovators_monitoring:latest
+    container_name: machine_innovators_app
+    ports:
+      - "7500:8080"
+    volumes:
+      - ./data:/working_dir/data # to mount the data folder in the container
+    restart: unless-stopped
+
+  ################# USE GRAFANA FOR DATA MONITORING #################
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment: # install CSV plugin to read sentiment.csv
+      - GF_INSTALL_PLUGINS=marcusolsson-csv-datasource
+      - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=marcusolsson-csv-datasource
+    volumes:
+      - grafana-storage:/var/lib/grafana
+      - ./data:/var/lib/grafana/csv
+
+volumes:
+  grafana-storage: {}
