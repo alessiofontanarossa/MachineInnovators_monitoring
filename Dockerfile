@@ -13,6 +13,6 @@ COPY ./tests/__init__.py /working_dir/tests/
 COPY ./tests/test_model.py /working_dir/tests/
 COPY ./tests/test_main.py /working_dir/tests/
 
-# a impler way could have been 'COPY . .'
+# a simpler way would have been 'COPY . .'
 EXPOSE 8080
 CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8080"]
