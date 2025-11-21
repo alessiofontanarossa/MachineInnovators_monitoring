@@ -4,7 +4,7 @@ services:
   ################# DOWNLOAD MY APP FROM DOCKER HUB #################
   app:
     image: alessiofontanarossa/machineinnovators_monitoring:latest
-    container_name: machine_innovators_app
+    container_name: backend_api
     ports:
       - "7500:8080"
     volumes:
@@ -19,11 +19,11 @@ services:
     ports:
       - "3000:3000"
     environment: # install CSV plugin to read sentiment.csv
+      - GF_SECURITY_ADMIN_PASSWORD=admin
       - GF_SERVER_ROOT_URL=http://my.grafana.server/
       - GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource
     volumes:
       - grafana-storage:/var/lib/grafana
-      - ./data:/var/lib/grafana/csv
-
+     
 volumes:
   grafana-storage: {}

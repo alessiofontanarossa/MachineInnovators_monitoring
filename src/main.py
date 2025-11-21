@@ -45,6 +45,7 @@ async def obtain_csv():
         return FileResponse(CSV_PATH, media_type='text/csv', filename="sentiment.csv")
     else:
         return {"error": "CSV file does not exist. Make some inferences first."}
+
 if __name__ == "__main__": 
     import uvicorn
     uvicorn.run(app,
