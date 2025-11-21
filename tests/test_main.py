@@ -21,3 +21,20 @@ def test_get_predictions():
   
     if os.path.exists(TEST_CSV_PATH): # clean the test file
         os.remove(TEST_CSV_PATH)
+
+def test_get_sentiment_data():
+    TEST_CSV_DOWNLOAD_PATH = "data/test_sentiment_download.csv"
+    if not os.path.exists("data"):
+        os.makedirs("data")
+    expected_content = "sentence,sentiment\nI am happy,positive\n"
+    with open(TEST_CSV_DOWNLOAD_PATH, "w", newline='') as f:
+        f.write(expected_content)
+    with patch("src.main.CSV_PATH", TEST_CSV_DOWNLOAD_PATH):
+        response = client.get("/obtain_csv")
+        
+        assert response.status_code == 200
+        assert response.headers["content-type"] in ["text/csv", "text/csv; charset=utf-8"]
+        assert response.text == expected_content
+
+    if os.path.exists(TEST_CSV_DOWNLOAD_PATH): # clean the test file
+        os.remove(TEST_CSV_DOWNLOAD_PATH)

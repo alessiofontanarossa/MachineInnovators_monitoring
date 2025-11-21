@@ -1,6 +1,7 @@
 import os, csv
 import numpy as np
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 # important specify src.model for the tests
 from src.model import get_pipeline, get_label_predictions 
@@ -38,6 +39,12 @@ async def get_predictions(new_sentences: Reviews):
             writer.writerow([sentence, int_to_label[int(sentiment)]])
     return {"predictions": predictions.tolist()}
 
+@app.get("/obtain_csv")
+async def obtain_csv():
+    if os.path.exists(CSV_PATH):
+        return FileResponse(CSV_PATH, media_type='text/csv', filename="sentiment.csv")
+    else:
+        return {"error": "CSV file does not exist. Make some inferences first."}
 if __name__ == "__main__": 
     import uvicorn
     uvicorn.run(app,
