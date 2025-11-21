@@ -9,7 +9,7 @@ on:
 jobs:
 
   ############ TESTING PHASE: CI ACTIONS ############
-  
+
   test:
     runs-on: ubuntu-latest
     steps:
@@ -61,4 +61,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/machine-innovators:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/machineinnovators_monitoring:latest
