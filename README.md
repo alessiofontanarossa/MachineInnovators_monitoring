@@ -1,6 +1,6 @@
 # MachineInnovators_monitoring
 
-This repository contains the elements of the final project of the course *MLOps e Machine Learning in Produzione*. 
+This repository contains the elements of the final project of the course *MLOps and Machine Learning in Deployment*. For the other projects, see this [repository](https://github.com/alessiofontanarossa/Profession-AI-Projects).
 
 We want to automatically monitor the online reputation of an agency. To do so, we use an [HuggingFace model](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment-latest) which classify the reviews as negative, neutral or positive. The project is structured as follows:
 
